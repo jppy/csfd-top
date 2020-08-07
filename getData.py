@@ -1,11 +1,8 @@
 
-
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import gzip
 import json
-
-
 
 class getData:
 
@@ -29,8 +26,7 @@ class getData:
                 link = links["href"]
                 movie_url = "https://www.csfd.cz/"+ link
                 self.movies_links.append(movie_url)
-            line += 1
-        
+            line += 1       
 # will go to each page, gather actors, fill dictionary
     def getActors (self):
         print ("Working on the actors..")
@@ -63,13 +59,3 @@ class getData:
         print ("Saving the data..")
         with open('outcome.json', 'w') as fp:
             json.dump(self.dict, fp, indent=4, ensure_ascii=False)
-
-
-
-base_file = getData("https://www.csfd.cz/zebricky/nejlepsi-filmy/?show=complete")
-base_file.getMovies()
-base_file.getActors()
-base_file.saveData()
-
-    
-
